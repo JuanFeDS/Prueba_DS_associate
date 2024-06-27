@@ -1,4 +1,9 @@
-import pickle
+import pandas as pd
 
-kmean = pickle.load(open("model.pkl", "rb"))
-
+def adjust_decimal_format(column: pd.Series):
+    try:
+        new_column = column.apply(lambda x: float(str(x).replace(',', '.').replace('nan', '0')))
+        return new_column
+    
+    except:
+        return new_column
